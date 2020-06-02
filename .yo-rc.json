@@ -1,0 +1,48 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.aa.jawaz",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "6.9.0",
+    "applicationType": "monolith",
+    "baseName": "jawaz",
+    "packageName": "com.aa.jawaz",
+    "packageFolder": "com/aa/jawaz",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MjVkMTcyZTgwZDc1ZDcyODM1YTc1MzI5YjM2ZjdmMTQ3OGI5NjRmMjUxZTgzZmJkY2EyODFkOWQyMDJhYmY0YzJkNTAxYWE1MjYwYjQ3ZWU4MjViMzFlZWZmM2MwMGZkM2JlZmRlNGNmNDQ5MjE4Nzg1NmNhMmUyODU0Mjg0YTM=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "lumen",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1591130049190,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-primeng-charts",
+        "version": "1.2.0"
+      }
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "fr",
+    "languages": ["fr", "ar-ly"],
+    "blueprints": []
+  }
+}

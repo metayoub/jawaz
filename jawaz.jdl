@@ -1,0 +1,112 @@
+/* Deal */
+entity Deal {
+    title String required
+    description String required
+    type TypeDeal required
+    url String
+    dateStart LocalDate
+    dateEnd LocalDate
+    datePublication LocalDate required
+    views Long
+    like Long
+    dislike Long
+    image String
+    price Float
+    priceNormal Float
+    priceShipping Float
+    local Boolean
+    coupon String
+    couponType TypeCoupon
+    couponValue Float
+    couponPercentage Float
+    statut StatutDeal required
+    code UUID unique
+}
+
+enum TypeDeal {
+    DEAL, COUPON 
+}
+enum TypeCoupon {
+    PERCENTAGE, DHS 
+}
+enum StatutDeal {
+    ACTIVE, HIDDEN, EXPIRED, PENDING
+}
+
+entity DealCategory {
+    name String required
+    description String
+}
+
+entity DealHistory {
+    attributName String required
+    attributLastValue String required
+    dateModification LocalDate required
+}
+
+entity DealReport {
+    reason String required
+    dateReport LocalDate required
+    isValid Boolean
+}
+
+entity DealComment {
+    code UUID unique
+    comment String required
+    dateComment LocalDate
+    isActive Boolean
+    isDeleted Boolean
+    like Long
+    dislike Long 
+    dateLastModification LocalDate
+}
+
+entity CommentHistory {
+    comment String required
+    dateModification LocalDate required
+}
+
+entity DealTrack {
+    ipLocalisation String required
+    isAuthentified Boolean required
+}
+
+entity DealUser {
+    trig String required unique
+    gender Gender required
+    phone String required
+    address String
+    birthDay LocalDate
+}
+
+enum Gender {
+    MALE, FEMALE
+}
+
+
+relationship OneToOne {
+    DealUser{user(login) required} to User
+    DealComment{dealComment} to DealComment
+}
+
+relationship OneToMany {
+    Deal{dealHistory} to DealHistory{deal(code)}
+    Deal{dealTrack} to DealTrack{deal(code)}
+    Deal{dealReport} to DealReport{deal(code)}
+    Deal{dealComment} to DealComment{deal(code)}
+    DealComment{dealHistory} to CommentHistory{dealComment(code)}
+
+}
+
+relationship ManyToOne {
+    Deal{owner(trig)} to DealUser,
+    DealComment{owner(trig)} to DealUser
+}
+
+relationship ManyToMany {
+    Deal{dealCategory} to DealCategory{deal}
+    DealUser{dealSaved} to Deal{code} 
+}
+
+service * with serviceClass
+paginate Deal, DealCategory, DealComment, DealHistory, DealReport, DealTrack, DealUser with infinite-scroll
